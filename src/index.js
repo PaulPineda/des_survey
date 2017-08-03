@@ -141,15 +141,16 @@ function DesSurveyReport(definition){
 
     if ( issue.resolved_answered && issue.has_issue_answered ) {
       const resolved = ( issue.resolved ) ? 'resolved':'unresolved';
-      visibleElements += createStringDomTag( 'div', 'des-survey-issue-text ' + resolved, issue.issue );
+      visibleElements += createStringDomTag( 'div', 'des-survey issue-text ' + resolved, issue.issue );
 
-      return createStringDomTag( 'div', 'des-survey-issue-' + issue.id, visibleElements);
+      return createStringDomTag( 'div', 'des-survey-issue ' + issue.id, visibleElements);
     }
 
 
     if ( issue.has_issue_answered ) {
       visibleElements +=
-      createStringDomTag( 'div', 'des-survey-suggested-res', issue.suggested_res ) +
+      createStringDomTag( 'div', 'des-survey issue-text', issue.issue ) +
+      createStringDomTag( 'div', 'des-survey suggested-res', issue.suggested_res ) +
       createStringDomButtons( 'div', 'des-survey-resolve-issue', issue.id, [
         { label: 'Unresovled', value: false },
         { label: 'Resolved', value: true }
@@ -157,15 +158,15 @@ function DesSurveyReport(definition){
 
     } else {
       visibleElements +=
-        createStringDomTag( 'div', 'des-survey-issue-text', issue.issue ) +
-        createStringDomTag( 'div', 'des-survey-question', issue.question ) +
+        createStringDomTag( 'div', 'des-survey issue-text', issue.issue ) +
+        createStringDomTag( 'div', 'des-survey question', issue.question ) +
         createStringDomButtons( 'div', 'des-survey-has-issue', issue.id, [
           { label: 'No', value: false },
           { label: 'Yes', value: true }
         ]);
     }
 
-    return createStringDomTag( 'div', 'des-survey-issue-' + issue.id, visibleElements);
+    return createStringDomTag( 'div', 'des-survey-issue ' + issue.id, visibleElements);
   }
 
   function createReportDomString ( issue ) {
